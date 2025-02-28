@@ -1,7 +1,7 @@
 # IV-SVAR Tutorial: Identifying Monetary Policy Shocks with External Instruments
 
 ## 📌 Introduction
-Welcome to this step-by-step tutorial on implementing **Instrumental Variable Structural Vector Autoregression (IV-SVAR)** in MATLAB. This tutorial is designed for beginners with **no prior experience in MATLAB, coding, or SVAR/macroeconometrics**. By the end of this tutorial, you will understand how to:
+Welcome to this step-by-step tutorial on implementing **Instrumental Variable Structural Vector Autoregression (IV-SVAR)** in MATLAB. I started this tutorial in Spring of 2024 to teach my classmates how to use SVAR in MATLAB. Disclaimer: I am in the process of updating this tutorial to be even better in 2025. This tutorial is designed for beginners with **minimal background in MATLAB, coding, or SVAR/macroeconometrics**. By the end of this tutorial, you will understand how to:
 
 ✅ Load and preprocess macroeconomic data
 ✅ Estimate a **Vector Autoregression (VAR)** model
@@ -119,7 +119,7 @@ plotirf_partial(meanirf,upper,lower,{'IP', 'CPI', 'SR', 'EBP'}, 'Monetary Policy
 If you find any issues or have suggestions, feel free to **open a GitHub issue** or **submit a pull request**.
 
 ## 📧 Contact
-For questions, email me at: **[your email]**
+For questions, email me at: **[tyler.sotomayor@columbia.edu]**
 
 ---
 
