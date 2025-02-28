@@ -1,7 +1,7 @@
 # IV-SVAR Tutorial: Identifying Monetary Policy Shocks with External Instruments
 
 ## 📌 Introduction
-Welcome to this step-by-step tutorial on implementing **Instrumental Variable Structural Vector Autoregression (IV-SVAR)** in MATLAB. I started this tutorial in Spring of 2024 to teach my classmates how to use SVAR in MATLAB. Disclaimer: I am in the process of updating this tutorial to be even better in 2025. This tutorial is designed for beginners with **minimal background in MATLAB, coding, or SVAR/macroeconometrics**. By the end of this tutorial, you will understand how to:
+Welcome to this step-by-step tutorial on implementing **Instrumental Variable Structural Vector Autoregression (IV-SVAR)** in MATLAB. I started this tutorial in Spring of 2024 to teach my classmates how to use SVAR in MATLAB. Disclaimer: I am in the process of updating this tutorial to be even better in 2025. This tutorials designed for beginners with **minimal background in MATLAB, coding, or SVAR/macroeconometrics**. By the end of this tutorial, you will understand how to:
 
 ✅ Load and preprocess macroeconomic data
 ✅ Estimate a **Vector Autoregression (VAR)** model
@@ -9,8 +9,6 @@ Welcome to this step-by-step tutorial on implementing **Instrumental Variable St
 ✅ Bootstrap confidence intervals to assess robustness
 ✅ Compare alternative identification strategies
 ✅ Replicate empirical findings from **Gertler & Karadi (2015)** and **Miranda-Agrippino & Ricco (2021)**
-
-# IV-SVAR Tutorial: Identifying Monetary Policy Shocks with External Instruments
 
 ## 📂 Repository Structure
 This repository contains:
@@ -35,6 +33,16 @@ These datasets are necessary to replicate the results:
 ### **3. Documentation**
 - `README.md` → This tutorial walkthrough
 - `LICENSE` (Optional) → Defines open-source terms (if applicable)
+
+### **4. Seminal Papers**
+A folder containing seminal papers related to IV-SVAR and macroeconometric identification strategies. These include:
+- **Gertler & Karadi (2015)** - Monetary Policy Surprises, Credit Spreads, and Economic Activity
+- **Miranda-Agrippino & Ricco (2021)** - The Transmission of Monetary Policy Shocks
+- **Stock & Watson (2012)** - Disentangling the Channels of Monetary Policy
+- **Plagborg-Møller & Wolf (2021)** - Local Projections and VARs Estimate the Same Impulse Responses
+- **Känzig (2021)** - The Macroeconomic Effects of Oil Supply News
+
+All related PDFs will be stored in the **`papers/` folder** within the repository.
 
 ## 🛠 Prerequisites
 This tutorial assumes no prior coding experience. However, you will need:
@@ -109,15 +117,8 @@ prc = 68;
 [upper, lower, meanirf, medianirf] = bootstrapIV_corrected(finaldata,p,c,beta,residuals,ff4, nboot, 2000, [1,240], [193,432], 3, hor, prc);
 ```
 
-## 📖 Step 6: Visualizing and Interpreting Results
-```matlab
-plotirf_partial(meanirf,upper,lower,{'IP', 'CPI', 'SR', 'EBP'}, 'Monetary Policy Shock', prc);
-```
-
 ## 📚 Further Reading & References
-- **Gertler & Karadi (2015)**: "Monetary Policy Surprises, Credit Spreads, and Economic Activity"
-- **Miranda-Agrippino & Ricco (2021)**: "The Transmission of Monetary Policy Shocks"
-- **Stock & Watson (2012)**: "Disentangling the Channels of Monetary Policy"
+The seminal papers mentioned above can be found in the **`papers/` folder** for further reading.
 
 ## 🛠 Contributing
 If you find any issues or have suggestions, feel free to **open a GitHub issue** or **submit a pull request**.
@@ -128,3 +129,4 @@ For questions, email me at: **[tyler.sotomayor@columbia.edu]**
 ---
 
 This tutorial is designed to be an **accessible introduction** to IV-SVAR. If you're stuck at any step, feel free to reach out!
+
