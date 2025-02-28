@@ -10,13 +10,31 @@ Welcome to this step-by-step tutorial on implementing **Instrumental Variable St
 ✅ Compare alternative identification strategies
 ✅ Replicate empirical findings from **Gertler & Karadi (2015)** and **Miranda-Agrippino & Ricco (2021)**
 
+# IV-SVAR Tutorial: Identifying Monetary Policy Shocks with External Instruments
+
 ## 📂 Repository Structure
 This repository contains:
-- `README.md`: This tutorial document
-- `IV_VAR.m`: The main MATLAB script implementing IV-SVAR
-- `Proxydata.xlsx`: Dataset used in the exercise
-- `instruments_GK2015.csv`: Instrumental variable dataset
-- `Figures/`: A folder containing generated impulse response function (IRF) plots
+
+### **1. Main MATLAB Scripts**
+These files contain the core implementation of the IV-SVAR model and related econometric procedures:
+- `IV_VAR.m` → Main script implementing IV-SVAR
+- `VAR.m` → Function for estimating a standard VAR
+- `woldirf.m` → Computes Wold IRFs
+- `choleskyIRF.m` → Implements Cholesky IRFs
+- `bootstrapChol.m`, `bootstrapIV_corrected.m` → Bootstrapping confidence bands
+- `plotirf_partial.m`, `plot_vardec.m` → Functions for plotting results
+- `myols.m` → Helper function for OLS regression
+- `remove_bias.m` → Bias correction function
+
+### **2. Data Files**
+These datasets are necessary to replicate the results:
+- `Proxydata.xlsx` → Macro dataset (FRED data)
+- `instruments_GK2015.csv` → External instruments for identification
+- `OilDataM.mat`, `OilSurprisesMLog.mat`, `OilSurprisesMLogControl.mat` → Used for **Känzig (2021) oil supply news replication**
+
+### **3. Documentation**
+- `README.md` → This tutorial walkthrough
+- `LICENSE` (Optional) → Defines open-source terms (if applicable)
 
 ## 🛠 Prerequisites
 This tutorial assumes no prior coding experience. However, you will need:
@@ -34,25 +52,20 @@ If you are completely new to MATLAB, consider reviewing **[MATLAB Onramp](https:
    ```
 3. Ensure that `Proxydata.xlsx` and `instruments_GK2015.csv` are in your working directory.
 
-## 📊 Step 2: Loading and Understanding the Data
-We use macroeconomic data from **FRED (Federal Reserve Economic Data)**, which includes:
-- **Industrial Production (IP)** (economic activity)
-- **Consumer Price Index (CPI)** (inflation measure)
-- **Shadow Rate (SR)** (monetary policy indicator)
-- **Excess Bond Premium (EBP)** (financial stress indicator)
+## 📁 Step 2: Navigating the Files
+Once you have cloned the repository, here’s how to navigate the key files:
+- **Start with `IV_VAR.m`**: This is the main script that runs the IV-SVAR model.
+- **Data files (`.xlsx`, `.mat`, `.csv`)**: These are preloaded datasets used for estimation.
+- **Helper functions (`.m` files)**: These perform operations like estimating VARs, computing impulse responses, and bootstrapping.
+- **Figures will be generated**: Running the script will create IRF and variance decomposition plots automatically.
 
-Load the data in MATLAB:
+To execute the full analysis, open MATLAB and run:
 ```matlab
-[data, ~] = xlsread('Proxydata.xlsx','Monthly','B2:E445');
-IP = log(data(:,1))*100;
-CPI = log(data(:,2))*100;
-EBP = data(:,3);
-SR = data(:,4);
-finaldata = [IP, CPI, SR, EBP];
-[T, N] = size(finaldata);
+run('IV_VAR.m')
 ```
+This will generate the impulse response functions and other outputs.
 
-## 📈 Step 3: Estimating a Cholesky VAR
+## 📊 Step 3: Estimating a Cholesky VAR
 Before implementing IV-SVAR, we estimate a **standard Cholesky VAR** as a benchmark.
 ```matlab
 p = 12;  % Lag length
@@ -90,22 +103,13 @@ s = [sq_sp(1) sq_sp(2) 1 sq_sp(3)]';
 ```
 
 ## 🔄 Step 5: Bootstrapping Confidence Intervals
-We use **wild bootstrapping** to construct confidence bands for impulse responses.
 ```matlab
 nboot = 1000;
 prc = 68;
 [upper, lower, meanirf, medianirf] = bootstrapIV_corrected(finaldata,p,c,beta,residuals,ff4, nboot, 2000, [1,240], [193,432], 3, hor, prc);
 ```
 
-## 🔍 Step 6: Alternative Identification Methods
-### Stock & Watson (2012) Method
-```matlab
-[delta, zhat, vt] = myols(ff4_final,residuals(193:end,:),0);
-```
-This method provides an alternative **projection approach** for identification.
-
-## 📖 Step 7: Visualizing and Interpreting Results
-We plot the estimated **Impulse Response Functions (IRFs)**:
+## 📖 Step 6: Visualizing and Interpreting Results
 ```matlab
 plotirf_partial(meanirf,upper,lower,{'IP', 'CPI', 'SR', 'EBP'}, 'Monetary Policy Shock', prc);
 ```
@@ -119,9 +123,8 @@ plotirf_partial(meanirf,upper,lower,{'IP', 'CPI', 'SR', 'EBP'}, 'Monetary Policy
 If you find any issues or have suggestions, feel free to **open a GitHub issue** or **submit a pull request**.
 
 ## 📧 Contact
-For questions, email me at: **[tyler.sotomayor@columbia.edu]**
+For questions, email me at: **[your email]**
 
 ---
 
 This tutorial is designed to be an **accessible introduction** to IV-SVAR. If you're stuck at any step, feel free to reach out!
-
