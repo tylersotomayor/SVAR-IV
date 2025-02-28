@@ -123,7 +123,7 @@ plotirf_partial(meanirf,upper,lower,{'IP', 'CPI', 'SR', 'EBP'}, 'Monetary Policy
 If you find any issues or have suggestions, feel free to **open a GitHub issue** or **submit a pull request**.
 
 ## 📧 Contact
-For questions, email me at: **[your email]**
+For questions, email me at: **[tyler.sotomayor@columbia.edu]**
 
 ---
 
