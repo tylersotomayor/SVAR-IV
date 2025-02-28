@@ -37,10 +37,12 @@ These datasets are necessary to replicate the results:
 ### **4. Seminal Papers**
 A folder containing seminal papers related to IV-SVAR and macroeconometric identification strategies. These include:
 - **Gertler & Karadi (2015)** - Monetary Policy Surprises, Credit Spreads, and Economic Activity
+- **Känzig (2021)** - The Macroeconomic Effects of Oil Supply News: Evidence from OPEC Announcements
 - **Miranda-Agrippino & Ricco (2021)** - The Transmission of Monetary Policy Shocks
-- **Stock & Watson (2012)** - Disentangling the Channels of Monetary Policy
-- **Plagborg-Møller & Wolf (2021)** - Local Projections and VARs Estimate the Same Impulse Responses
-- **Känzig (2021)** - The Macroeconomic Effects of Oil Supply News
+- **Montiel-Olea, Stock, and Watson (2020)** - Inference in Structural Vector Autoregressions Identified with an External Instrument
+- **Plagborg-Møller & Wolf (2021)** - Local Projections and VARs Estimate the Same Impulse 
+- **Stock & Watson (2018)** - Identification and Estimation of Dynamic Causal Effects in Macroeconomics Using External Instruments
+
 
 All related PDFs will be stored in the **`papers/` folder** within the repository.
 
